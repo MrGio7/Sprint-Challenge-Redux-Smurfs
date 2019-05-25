@@ -1,3 +1,5 @@
+import { FETCH_DATA_SUCCESS } from "../actions";
+
 /*
   Be sure to import in all of the action types from `../actions`
 */
@@ -24,7 +26,13 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
-
+    case FETCH_DATA_SUCCESS:
+      return{
+        ...state,
+        smurfs: action.payload,
+        fetchingSmurfs: false,
+        error: null,
+      }
   
   default:
     return state;

@@ -17,15 +17,22 @@ class App extends Component {
 
 
   render() {
+    console.log(this.props.smurfs)
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        {this.props.smurfs.map((smurf, index) => (
+          <div className='smurf' key={index}>
+            <h2>Name: {smurf.name}</h2>
+            <h2>Age: {smurf.age}</h2>
+            <h2>Height: {smurf.height}</h2>
+          </div>
+        ))}
       </div>
     );
   }
 }
 
-export default connect(null, {getData})(App);
+const mapStateToProps = ({ smurfs, fetchingData }) => ({ smurfs, fetchingData }) 
+
+export default connect(mapStateToProps, {getData})(App);
