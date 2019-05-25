@@ -21,6 +21,27 @@ export const getData = () => dispatch => {
     })
 }
 
+export const ADD_SMURF = 'ADD_SMURF';
+export const ADD_SMURF_SUCCESS = 'ADD_SMURF_SUCCESS';
+export const ADD_SMURF_FAILURE = 'ADD_SMURF_FAILURE ';
+
+export const addSmurf = ({ name, age, height }) => dispatch => {
+  dispatch({ type:ADD_SMURF });
+  axios
+  .post('http://localhost:3333/smurfs', {
+    name,
+    age,
+    height
+  })
+  .then(res => {
+    dispatch({ type: ADD_SMURF_SUCCESS, payload: res.data})
+  })
+  .catch(err => {
+    console.log(err)
+    dispatch({ type:ADD_SMURF_FAILURE, payload: err })
+  })
+}
+
 
 
 /*
