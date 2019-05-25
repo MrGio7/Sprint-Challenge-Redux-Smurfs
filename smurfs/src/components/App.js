@@ -6,7 +6,16 @@ import './App.css';
  Just remember, `how do I `connect` my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
+import { connect } from 'react-redux';
+
+import { getData } from '../actions';
+
 class App extends Component {
+  componentDidMount() {
+    this.props.getData();
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -19,4 +28,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, {getData})(App);
