@@ -35,6 +35,13 @@ class App extends React.Component {
   addNewSmurf = e => {
     e.preventDefault();
     this.props.addSmurf(this.state.smurf)
+    this.setState ({
+      smurf: {
+        name:'',
+        age:'',
+        height:''
+      }
+    })
   }
 
 
@@ -53,7 +60,7 @@ class App extends React.Component {
           </div>
         ))}
 
-<form action="">
+<form action="" className='newSmurf'>
         <input
           type="text"
           name="name"
@@ -77,6 +84,8 @@ class App extends React.Component {
           placeholder="Height"
           value={this.state.smurf.height}
         />
+
+        <div/>
 
         <button onClick={this.addNewSmurf}>
         Add Smurf
