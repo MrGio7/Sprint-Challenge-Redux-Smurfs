@@ -1,6 +1,7 @@
 import { 
   FETCH_DATA_SUCCESS,
-  ADD_SMURF_SUCCESS
+  ADD_SMURF_SUCCESS,
+  DELETE_ITEM_SUCCESS
  } from "../actions";
 
 /*
@@ -41,6 +42,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         smurfs: action.payload,
       }
+
+      case DELETE_ITEM_SUCCESS:
+      return {
+        ...state,
+        smurfs: action.payload
+      };
   
   default:
     return state;

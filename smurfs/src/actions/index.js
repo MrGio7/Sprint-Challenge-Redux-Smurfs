@@ -41,6 +41,19 @@ export const addSmurf = ({ name, age, height }) => dispatch => {
   })
 }
 
+export const DELETE_ITEM_START = 'DELETE_ITEM_START';
+export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
+export const DELETE_ITEM_FAILURE = 'DELETE_ITEM_FAILURE';
+export const deleteItem = id => dispatch => {
+  dispatch({ type: DELETE_ITEM_START });
+  axios
+    .delete(`http://localhost:3333/smurfs/${id}`)
+    .then(response => {
+      console.log(response)
+      dispatch({ type: DELETE_ITEM_SUCCESS, payload: response.data });
+    })
+    .catch(error => dispatch({ type: DELETE_ITEM_FAILURE, payload: error }));
+};
 
 
 /*
