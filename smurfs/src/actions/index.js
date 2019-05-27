@@ -50,7 +50,7 @@ export const deleteItem = id => dispatch => {
     .delete(`http://localhost:3333/smurfs/${id}`)
     .then(response => {
       console.log(response)
-      dispatch({ type: DELETE_ITEM_SUCCESS, payload: response });
+      dispatch({ type: DELETE_ITEM_SUCCESS, payload: response.data });
     })
     .catch(error => dispatch({ type: DELETE_ITEM_FAILURE, payload: error }));
 };
