@@ -8,7 +8,7 @@ import './App.css';
  */
 import { connect } from 'react-redux';
 
-import { getData, addSmurf } from '../actions';
+import { getData, addSmurf, deleteItem } from '../actions';
 
 class App extends React.Component {
   componentDidMount() {
@@ -44,6 +44,11 @@ class App extends React.Component {
     })
   }
 
+  deleteSmurf = (id) => {
+    this.props.deleteItem(id)
+  }
+
+
 
   render() {
     return (
@@ -52,7 +57,7 @@ class App extends React.Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
 
         {this.props.smurfs.map((smurf, index) => (
-          <div className='smurf' key={index}>
+          <div className='smurf' key={index} onDoubleClick={() => {this.deleteSmurf(smurf.id)}}>
             <h2><strong>Name:</strong> {smurf.name}</h2>
             <h2><strong>Age:</strong> {smurf.age}</h2>
             <h2><strong>Height:</strong> {smurf.height}</h2>
@@ -97,4 +102,4 @@ class App extends React.Component {
 
 const mapStateToProps = ({ smurfs }) => ({ smurfs }) 
 
-export default connect(mapStateToProps, {getData, addSmurf})(App);
+export default connect(mapStateToProps, {getData, addSmurf, deleteItem})(App);

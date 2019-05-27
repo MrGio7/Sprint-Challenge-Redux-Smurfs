@@ -46,7 +46,7 @@ export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
 export const DELETE_ITEM_FAILURE = 'DELETE_ITEM_FAILURE';
 export const deleteItem = id => dispatch => {
   dispatch({ type: DELETE_ITEM_START });
-  return axios
+  axios
     .delete(`http://localhost:3333/smurfs/${id}`)
     .then(response => {
       console.log(response)
