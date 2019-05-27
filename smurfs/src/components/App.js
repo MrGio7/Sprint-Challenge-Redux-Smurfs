@@ -32,13 +32,14 @@ class App extends React.Component {
     })
   };
 
-  addNewSmurf = () => {
+  addNewSmurf = e => {
+    e.preventDefault();
     this.props.addSmurf(this.state.smurf)
   }
 
 
   render() {
-    console.log(this.props)
+    console.log(this.state.smurf)
     return (
       <div className="App">
 
@@ -56,28 +57,28 @@ class App extends React.Component {
         <input
           type="text"
           name="name"
-          onChange={this.props.changeHandler}
+          onChange={this.changeHandler}
           placeholder="Name"
-          value={this.props.smurfs.name}
+          value={this.state.smurf.name}
         />
 
         <input
           type="text"
           placeholder="Age"
           name="age"
-          onChange={this.props.changeHandler}
-          value={this.props.smurfs.age}
+          onChange={this.changeHandler}
+          value={this.state.smurf.age}
         />
 
         <input
           type="text"
           name="height"
-          onChange={this.props.changeHandler}
+          onChange={this.changeHandler}
           placeholder="Height"
-          value={this.props.smurfs.height}
+          value={this.state.smurf.height}
         />
 
-        <button >
+        <button onClick={this.addNewSmurf}>
         Add Smurf
         </button>
       </form>
